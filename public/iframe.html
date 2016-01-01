@@ -1,0 +1,49 @@
+<html>
+    <head>
+    </head>
+    <body>
+    <script src="jquery.js"></script>
+    <script>
+    var img;
+    window.setPos = function(x, y) {
+        console.log(x+' '+y);
+        $('#x').val(x);
+        $('#y').val(y);
+    }
+    
+    $( document ).ready(function() {
+        console.log('yo');
+        var _URL = window.URL || window.webkitURL;
+        $("#image").change(function (e) {
+            var file;
+            if ((file = this.files[0])) {
+                img = new Image();
+                img.onload = function () {
+                    //alert(this.width + " " + this.height);
+                    $('#width').val(this.width);
+                    $('#height').val(this.height);
+                    $('#addimg_img').attr('src', this.src);
+                    $('#addimg_img').css('display', 'block');
+                };
+                img.src = _URL.createObjectURL(file);
+            }
+        });
+        /*$( document ).mousemove(function( event ) {
+        });*/
+    });
+    </script><div style="position:absolute; top:0px; left:0px; background-color:silver">
+    <img id="addimg_img" style="display:none" src="">
+    <br><div style="padding:10px;">Upload your image:
+    <form action="/upload" method="post" enctype="multipart/form-data"> 
+    <label for="file">Filename:</label>
+    <input type="file" name="image" id="image"><table><tr><td>
+    Your url: </td><td><input type="text" name="url"></td></tr><tr><td>
+    Your secret: </td><td><input type="password" name="secret"></td></tr></table>
+    <input type="submit" name="submit" value="Submit">
+    <input type="hidden" name="x" id='x'>
+    <input type="hidden" name="y" id='y'>
+    <input type="hidden" name="width" id="width">
+    <input type="hidden" name="height" id="height"></div></div>
+    </form></body></html>
+    </body>
+</html>

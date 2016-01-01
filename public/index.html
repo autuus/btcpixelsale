@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>ITS OVER NINE THOUSAAND!!!</title>
+    </head>
+    <body>
+    <script src="jquery.js"></script>
+    <script>
+    var img;
+    
+    $( document ).ready(function() {
+        console.log('yo');
+        /*$( document ).mousemove(function( event ) {
+        });*/
+        $( '#canvas' ).click(function( event ) {
+            var msg = "Handler for .click() called at ";
+            msg += event.pageX + ", " + event.pageY;
+            console.log(msg);
+            $('#addimage').css('display', 'block');
+            $('#addimage').css('top', event.pageY);
+            $('#addimage').css('left', event.pageX);
+            document.getElementById("hackishIframe").contentWindow.setPos(event.pageY, event.pageX);
+        });
+    });
+    </script>
+    <center><img src="canvas.png" id='canvas' border="5"></center>
+    <div style="position:absolute; top:0px; left:0px;  display: none;" id="addimage">
+    <iframe id="hackishIframe" src="iframe.html" frameBorder="0" width="400" height="300" ></iframe>
+    </body></html>
+    </body>
+</html>
